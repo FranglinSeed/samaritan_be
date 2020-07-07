@@ -1,5 +1,5 @@
 class AuthenticationController < ApplicationController
-  before_action :authorize_request, except: %i[login getRequests]
+  before_action :authorize_request, except: :login
 
   # POST /auth/login
   def login
@@ -12,42 +12,10 @@ class AuthenticationController < ApplicationController
       render json: { error: 'unauthorized' }, status: :unauthorized
     end
   end
-
-  # POST /createRequest
-  def createRequest
-    @request_params = {
-        "description" => params[:description],
-        "requestType" => params[:requestType],
-        "latitude" => params[:latitude],
-        "longitude" => params[:longitude],
-        "address" => params[:address],
-        "user_id" => @current_user.id,
-        "status" => params[:status],
-    }
-
-    logger::info @request_params
-    @request =  Request.new(@request_params)
-    if @request.save
-      render json: {result: true}, status: :created
-    else
-      render error: { error: 'Unable to create request.' }, status: 400
-    end
-  end
-
-  # Get /getRequests
-  def getRequests
-    @requests =  Request.all
-    render json: @requests, status: :ok
-  end
-
   private
 
   def login_params
     params.permit(:email, :password)
   end
-
-  #def request_params
-  #  params.require(:request).permit(:description, :requestType, :latitude, :longitude, :address, :user_id, :status )
-  #end
 
 end

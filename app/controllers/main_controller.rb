@@ -12,8 +12,6 @@ class MainController < ApplicationController
         "user_id" => @current_user.id,
         "status" => params[:status],
     }
-
-    logger::info @request_params
     @request =  Request.new(@request_params)
     if @request.save
       render json: {result: true}, status: :created
@@ -28,11 +26,22 @@ class MainController < ApplicationController
     render json: @requests, status: :ok
   end
 
-  ## Post /createConversation
-  #def createMessage
-  #  @requests =  Request.all
-  #  render json: @requests, status: :ok
-  #end
+  # Post /createConversation
+  def createConversation
+    @conversation_params = {
+        "request_id" => params[:requestId],
+        "user_id" => @current_user.id,
+        "message" => params[:message],
+    }
+    @conversation =  Conversation.new(@conversation_params)
+    if @conversation.save
+      @conversations =  Conversation.where(request_id: params[:requestId]).all
+      render json: @conversations, status: :created
+    else
+      render json: { errors: @conversation.errors.full_messages },
+             status: :unprocessable_entity
+    end
+  end
 
   private
 
@@ -40,7 +49,7 @@ class MainController < ApplicationController
     params.require(:request).permit(:description, :requestType, :latitude, :longitude, :address, :user_id, :status )
   end
 
-  #def conversation_params
-  #  params.require(:conversation).permit(:request_id, :, :latitude, :longitude, :address, :user_id, :status )
-  #end
+  def conversation_params
+    params.require(:conversation).permit(:request_id, :user_id, :message )
+  end
 end

@@ -7357,3 +7357,525 @@ Processing by MainController#getRequests as HTML
 Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms | Allocations: 1036)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2834931724952839050)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateConversations (20200707151623)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (61.8ms)[0m  [1m[35mCREATE TABLE "conversations" ("id" bigserial primary key, "request_id" bigint NOT NULL, "user_id" bigint NOT NULL, "message" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_3fa9574aba"
+FOREIGN KEY ("request_id")
+  REFERENCES "requests" ("id")
+, CONSTRAINT "fk_rails_7c15d62a0a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (23.6ms)[0m  [1m[35mCREATE  INDEX  "index_conversations_on_request_id" ON "conversations"  ("request_id")[0m
+  [1m[35m (19.7ms)[0m  [1m[35mCREATE  INDEX  "index_conversations_on_user_id" ON "conversations"  ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200707151623"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2834931724952839050)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/getRequests" for ::1 at 2020-07-08 00:25:21 +0900
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MainController#getRequests as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212"}}
+  [1m[36mRequest Load (1.5ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/main_controller.rb:26:in `getRequests'
+Completed 200 OK in 10ms (Views: 7.1ms | ActiveRecord: 1.5ms | Allocations: 8038)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:26:00 +0900
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"icarus96119@gmail.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"icarus96119@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "icarus96119@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 200ms (Views: 0.1ms | ActiveRecord: 1.2ms | Allocations: 6819)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-08 00:26:17 +0900
+Error occurred while parsing request parameters.
+Contents:
+
+{
+    "userId": "1",
+    "requestId": "2",
+    "message": "I love you",
+}
+  
+ActionDispatch::Http::Parameters::ParseError (767: unexpected token at '{
+    "userId": "1",
+    "requestId": "2",
+    "message": "I love you",
+}'):
+  
+actionpack (6.0.3.2) lib/action_dispatch/http/parameters.rb:114:in `rescue in parse_formatted_parameters'
+actionpack (6.0.3.2) lib/action_dispatch/http/parameters.rb:110:in `parse_formatted_parameters'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:389:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:388:in `POST'
+actionpack (6.0.3.2) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.0.3.2) lib/action_controller/metal/params_wrapper.rb:278:in `_wrapper_enabled?'
+actionpack (6.0.3.2) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+activerecord (6.0.3.2) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.2) lib/abstract_controller/base.rb:136:in `process'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+{
+    "userId": "1",
+    "requestId": "2",
+    "message": "I love you",
+}
+Started POST "/createRequest" for ::1 at 2020-07-08 00:28:15 +0900
+Processing by MainController#createRequest as */*
+  Parameters: {"userId"=>"1", "requestId"=>"2", "message"=>"I love you", "main"=>{"userId"=>"1", "requestId"=>"2", "message"=>"I love you"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[36mRequest Create (0.7ms)[0m  [1m[32mINSERT INTO "requests" ("user_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["user_id", 1], ["created_at", "2020-07-07 15:28:15.995833"], ["updated_at", "2020-07-07 15:28:15.995833"]]
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+Completed 201 Created in 12ms (Views: 0.3ms | ActiveRecord: 2.4ms | Allocations: 4518)
+
+
+Started POST "/createConversation" for ::1 at 2020-07-08 00:29:05 +0900
+Processing by MainController#createConversation as */*
+  Parameters: {"userId"=>"1", "requestId"=>"2", "message"=>"I love you", "main"=>{"userId"=>"1", "requestId"=>"2", "message"=>"I love you"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.3ms | Allocations: 909)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'request_id' for Request.):
+  
+app/controllers/main_controller.rb:36:in `createConversation'
+Started POST "/createConversation" for ::1 at 2020-07-08 00:29:58 +0900
+Processing by MainController#createConversation as */*
+  Parameters: {"requestId"=>"2", "message"=>"I love you", "main"=>{"requestId"=>"2", "message"=>"I love you"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 8.9ms | Allocations: 14221)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'request_id' for Request.):
+  
+app/controllers/main_controller.rb:36:in `createConversation'
+Started POST "/createConversation" for ::1 at 2020-07-08 00:30:58 +0900
+Processing by MainController#createConversation as */*
+  Parameters: {"requestId"=>"2", "message"=>"I love you", "main"=>{"requestId"=>"2", "message"=>"I love you"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:37:in `createConversation'
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:37:in `createConversation'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:37:in `createConversation'
+  [1m[36mConversation Create (2.4ms)[0m  [1m[32mINSERT INTO "conversations" ("request_id", "user_id", "message", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["request_id", 2], ["user_id", 1], ["message", "I love you"], ["created_at", "2020-07-07 15:30:58.263548"], ["updated_at", "2020-07-07 15:30:58.263548"]]
+  ↳ app/controllers/main_controller.rb:37:in `createConversation'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:37:in `createConversation'
+  [1m[36mConversation Load (0.3ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."request_id" = $1[0m  [["request_id", 2]]
+  ↳ app/controllers/main_controller.rb:39:in `createConversation'
+Completed 201 Created in 55ms (Views: 2.1ms | ActiveRecord: 11.0ms | Allocations: 24895)
+
+
+Started POST "/createConversation" for ::1 at 2020-07-08 00:31:10 +0900
+Processing by MainController#createConversation as */*
+  Parameters: {"requestId"=>"2", "message"=>"I love you too", "main"=>{"requestId"=>"2", "message"=>"I love you too"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:37:in `createConversation'
+  [1m[36mRequest Load (0.4ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:37:in `createConversation'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:37:in `createConversation'
+  [1m[36mConversation Create (0.5ms)[0m  [1m[32mINSERT INTO "conversations" ("request_id", "user_id", "message", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["request_id", 2], ["user_id", 1], ["message", "I love you too"], ["created_at", "2020-07-07 15:31:10.484281"], ["updated_at", "2020-07-07 15:31:10.484281"]]
+  ↳ app/controllers/main_controller.rb:37:in `createConversation'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:37:in `createConversation'
+  [1m[36mConversation Load (0.3ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."request_id" = $1[0m  [["request_id", 2]]
+  ↳ app/controllers/main_controller.rb:39:in `createConversation'
+Completed 201 Created in 20ms (Views: 2.7ms | ActiveRecord: 2.3ms | Allocations: 6495)
+
+
+Started GET "//getRequests" for ::1 at 2020-07-08 00:34:07 +0900
+Processing by MainController#getRequests as HTML
+  [1m[36mRequest Load (0.4ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/main_controller.rb:26:in `getRequests'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.4ms | Allocations: 1200)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:34:11 +0900
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"icarus96119@gmail.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"icarus96119@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "icarus96119@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 190ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1078)
+
+
+Started GET "//getRequests" for ::1 at 2020-07-08 00:34:11 +0900
+Processing by MainController#getRequests as HTML
+  [1m[36mRequest Load (0.5ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/main_controller.rb:26:in `getRequests'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.5ms | Allocations: 1191)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2834931724952839050)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20200703212740)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (12.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "firstName" character varying, "lastName" character varying, "email" character varying, "password_digest" character varying, "attachment" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2834931724952839050)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2834931724952839050)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20200703212740)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (52.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "firstName" character varying, "lastName" character varying, "email" character varying, "password_digest" character varying, "attachment" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200703212740"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRequests (20200707142829)
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (71.5ms)[0m  [1m[35mCREATE TABLE "requests" ("id" bigserial primary key, "user_id" bigint NOT NULL, "description" character varying, "requestType" character varying, "latitude" float, "longitude" float, "address" character varying, "status" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_8ead8b1e6b"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (22.5ms)[0m  [1m[35mCREATE  INDEX  "index_requests_on_user_id" ON "requests"  ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200707142829"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateConversations (20200707151623)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (75.9ms)[0m  [1m[35mCREATE TABLE "conversations" ("id" bigserial primary key, "request_id" bigint NOT NULL, "user_id" bigint NOT NULL, "message" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_3fa9574aba"
+FOREIGN KEY ("request_id")
+  REFERENCES "requests" ("id")
+, CONSTRAINT "fk_rails_7c15d62a0a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (20.4ms)[0m  [1m[35mCREATE  INDEX  "index_conversations_on_request_id" ON "conversations"  ("request_id")[0m
+  [1m[35m (24.2ms)[0m  [1m[35mCREATE  INDEX  "index_conversations_on_user_id" ON "conversations"  ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200707151623"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2834931724952839050)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "//getRequests" for ::1 at 2020-07-08 00:38:06 +0900
+Processing by MainController#getRequests as HTML
+  [1m[36mRequest Load (2.8ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/main_controller.rb:26:in `getRequests'
+Completed 200 OK in 11ms (Views: 3.0ms | ActiveRecord: 5.7ms | Allocations: 2085)
+
+
+Started GET "//getRequests" for ::1 at 2020-07-08 00:38:08 +0900
+Processing by MainController#getRequests as HTML
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/main_controller.rb:26:in `getRequests'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms | Allocations: 858)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:38:10 +0900
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"icarus96119@gmail.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"icarus96119@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "icarus96119@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 401 Unauthorized in 6ms (Views: 0.1ms | ActiveRecord: 2.0ms | Allocations: 2078)
+
+
+Started POST "//users" for ::1 at 2020-07-08 00:38:17 +0900
+Processing by UsersController#create as HTML
+  Parameters: {"firstName"=>"icarus", "lastName"=>"software", "email"=>"icarus96119@gmail.com", "password"=>"[FILTERED]", "attachment"=>"", "user"=>{"firstName"=>"icarus", "lastName"=>"software", "email"=>"icarus96119@gmail.com", "attachment"=>""}}
+[31mUnpermitted parameter: :user[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "icarus96119@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("firstName", "lastName", "email", "password_digest", "attachment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["firstName", "icarus"], ["lastName", "software"], ["email", "icarus96119@gmail.com"], ["password_digest", "$2a$12$gk1yYvTLbyYHDJo0Vi.yg.EcOqO4WBtDe/6MZ.kw5Oeb5QIXLwCA."], ["attachment", ""], ["created_at", "2020-07-07 15:38:17.580334"], ["updated_at", "2020-07-07 15:38:17.580334"]]
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+Completed 201 Created in 204ms (Views: 0.2ms | ActiveRecord: 4.7ms | Allocations: 8770)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:38:21 +0900
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"icarus96119@gmail.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"icarus96119@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "icarus96119@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 191ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 958)
+
+
+Started GET "//getRequests" for ::1 at 2020-07-08 00:38:22 +0900
+Processing by MainController#getRequests as HTML
+  [1m[36mRequest Load (0.4ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/main_controller.rb:26:in `getRequests'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 858)
+
+
+Started POST "//createRequest" for ::1 at 2020-07-08 00:38:37 +0900
+Processing by MainController#createRequest as HTML
+  Parameters: {"description"=>"Axe", "requestType"=>"One Time", "latitude"=>"44", "longitude"=>"-76", "address"=>"Axe", "userId"=>1, "status"=>true, "main"=>{"description"=>"Axe", "requestType"=>"One Time", "latitude"=>"44", "longitude"=>"-76", "address"=>"Axe", "userId"=>1, "status"=>true}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[36mRequest Create (1.0ms)[0m  [1m[32mINSERT INTO "requests" ("user_id", "description", "requestType", "latitude", "longitude", "address", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["user_id", 1], ["description", "Axe"], ["requestType", "One Time"], ["latitude", 44.0], ["longitude", -76.0], ["address", "Axe"], ["status", true], ["created_at", "2020-07-07 15:38:37.801523"], ["updated_at", "2020-07-07 15:38:37.801523"]]
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+Completed 201 Created in 20ms (Views: 0.1ms | ActiveRecord: 2.9ms | Allocations: 10507)
+
+
+Started GET "//getRequests" for ::1 at 2020-07-08 00:38:37 +0900
+Processing by MainController#getRequests as HTML
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/main_controller.rb:26:in `getRequests'
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.3ms | Allocations: 1053)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-08 00:40:10 +0900
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212"}}
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 212)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-08 00:40:14 +0900
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212"}}
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 211)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:40:18 +0900
+Processing by AuthenticationController#login as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 401 Unauthorized in 4ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 852)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:40:58 +0900
+Processing by AuthenticationController#login as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 845)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:41:05 +0900
+Processing by AuthenticationController#login as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 401 Unauthorized in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 845)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:41:05 +0900
+Processing by AuthenticationController#login as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 845)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:41:06 +0900
+Processing by AuthenticationController#login as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 401 Unauthorized in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 845)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:41:06 +0900
+Processing by AuthenticationController#login as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 401 Unauthorized in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 845)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:41:07 +0900
+Processing by AuthenticationController#login as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 845)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:41:13 +0900
+Processing by AuthenticationController#login as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 845)
+
+
+Started GET "//getRequests" for ::1 at 2020-07-08 00:41:15 +0900
+Processing by MainController#getRequests as HTML
+  [1m[36mRequest Load (0.5ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/main_controller.rb:26:in `getRequests'
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.5ms | Allocations: 1036)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:41:18 +0900
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"icarus96119@gmail.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"icarus96119@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "icarus96119@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 200 OK in 191ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 880)
+
+
+Started GET "//getRequests" for ::1 at 2020-07-08 00:41:19 +0900
+Processing by MainController#getRequests as HTML
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/main_controller.rb:26:in `getRequests'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.3ms | Allocations: 1036)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-08 00:41:28 +0900
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212"}}
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 209)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-08 00:41:29 +0900
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212"}}
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 209)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-08 00:41:30 +0900
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212"}}
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 209)
+
+
+Started POST "/getRequests" for ::1 at 2020-07-08 00:41:52 +0900
+  
+ActionController::RoutingError (No route matches [POST] "/getRequests"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/getRequests" for ::1 at 2020-07-08 00:42:04 +0900
+Processing by MainController#getRequests as */*
+  Parameters: {"main"=>{}}
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  ↳ app/controllers/main_controller.rb:26:in `getRequests'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.3ms | Allocations: 1037)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:42:12 +0900
+Processing by AuthenticationController#login as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 401 Unauthorized in 3ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 845)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:42:40 +0900
+Processing by AuthenticationController#login as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 845)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:42:40 +0900
+Processing by AuthenticationController#login as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 401 Unauthorized in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 845)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-08 00:42:41 +0900
+Processing by AuthenticationController#login as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 845)
+
+
+Started POST "/createConversation" for ::1 at 2020-07-08 00:43:23 +0900
+Processing by MainController#createConversation as */*
+  Parameters: {"requestId"=>"1", "message"=>"I love you too", "main"=>{"requestId"=>"1", "message"=>"I love you too"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:37:in `createConversation'
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:37:in `createConversation'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:37:in `createConversation'
+  [1m[36mConversation Create (3.3ms)[0m  [1m[32mINSERT INTO "conversations" ("request_id", "user_id", "message", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["request_id", 1], ["user_id", 1], ["message", "I love you too"], ["created_at", "2020-07-07 15:43:23.842458"], ["updated_at", "2020-07-07 15:43:23.842458"]]
+  ↳ app/controllers/main_controller.rb:37:in `createConversation'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:37:in `createConversation'
+  [1m[36mConversation Load (0.5ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."request_id" = $1[0m  [["request_id", 1]]
+  ↳ app/controllers/main_controller.rb:39:in `createConversation'
+Completed 201 Created in 28ms (Views: 3.3ms | ActiveRecord: 7.3ms | Allocations: 11473)
+
+

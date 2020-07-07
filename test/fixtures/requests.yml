@@ -3,15 +3,17 @@
 one:
   user: one
   description: MyString
-  type: 
-  latitude: 
-  longitude: 
+  requestType: MyString
+  latitude: 1.5
+  longitude: 1.5
   address: MyString
+  status: false
 
 two:
   user: two
   description: MyString
-  type: 
-  latitude: 
-  longitude: 
+  requestType: MyString
+  latitude: 1.5
+  longitude: 1.5
   address: MyString
+  status: false

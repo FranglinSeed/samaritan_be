@@ -7,6 +7,7 @@ class CreateRequests < ActiveRecord::Migration[6.0]
       t.float :latitude
       t.float :longitude
       t.string :address
+      t.boolean :status
 
       t.timestamps
     end

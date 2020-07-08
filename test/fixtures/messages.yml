@@ -1,11 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  request: one
   user: one
-  message: one
+  content: MyString
 
 two:
-  request: two
   user: two
-  message: two
+  content: MyString

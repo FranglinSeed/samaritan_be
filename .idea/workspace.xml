@@ -2,10 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0d7ec80-8973-4c7e-83eb-b48bf6f93256" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/models/message.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20200708154633_create_messages.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/fixtures/messages.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/models/message_test.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/authentication_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/authentication_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/main_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/main_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/conversation.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/conversation.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20200707151623_create_conversations.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20200708155253_create_conversations.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/seeds.rb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/log/development.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/development.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/conversations.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test/fixtures/conversations.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmp/pids/server.pid" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/pids/server.pid" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,7 +167,7 @@
       <workItem from="1594128872262" duration="3401000" />
       <workItem from="1594157628355" duration="3161000" />
       <workItem from="1594197382506" duration="4396000" />
-      <workItem from="1594219232686" duration="1613000" />
+      <workItem from="1594219232686" duration="14713000" />
     </task>
     <task id="LOCAL-00001" summary="feat: create main controller&#10;fix: move getRequest and createRequest functions to main">
       <created>1594134943023</created>
@@ -173,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594136667423</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: old conversation login implemented">
+      <created>1594222321830</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1594222321830</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,25 +212,26 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: create main controller&#10;fix: move getRequest and createRequest functions to main" />
     <MESSAGE value="feat: create new conversation" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: create new conversation" />
+    <MESSAGE value="feat: old conversation login implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: old conversation login implemented" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593811298784">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593811298784" />
-    <state x="585" y="115" key="CommitChangelistDialog2" timestamp="1594136666253">
+    <state x="585" y="115" key="CommitChangelistDialog2" timestamp="1594222319877">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1594136666253" />
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1594134437939">
+    <state x="585" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1594222319877" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1594239251751">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594134437939" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1594136668944">
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594239251751" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1594222323921">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1594136668944" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1594222323921" />
     <state x="656" y="118" width="1084" height="804" key="find.popup" timestamp="1593865580835">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

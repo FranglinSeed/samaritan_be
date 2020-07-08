@@ -3,7 +3,7 @@ class CreateConversations < ActiveRecord::Migration[6.0]
     create_table :conversations do |t|
       t.references :request, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
-      t.string :message
+      t.references :message, null: false, foreign_key: true
 
       t.timestamps
     end

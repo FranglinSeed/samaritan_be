@@ -22,59 +22,91 @@ class MainController < ApplicationController
 
   # Get /getRequests
   def getRequests
-    @requests =  Request.where(status: true).all
+    @tempRequests =  Request.where(status: true).all
+    @requests = []
+    @tempRequests.each do |request|
+      @temp = {
+          "id" => request.id,
+          "userId" => request.user_id.to_s,
+          "description" => request.description,
+          "requestType" => request.requestType,
+          "latitude" => request.latitude,
+          "longitude" => request.longitude,
+          "address" => request.address,
+          "userName" => request.user.firstName + ' ' + request.user.lastName,
+          "status" => request.status,
+      }
+      @requests.push(@temp)
+    end
     render json: @requests, status: :ok
   end
 
-  # Post /createConversation
-  def createConversation
-    @conversation_params = {
-        "request_id" => params[:requestId],
-        "user_id" => @current_user.id,
-        "message" => params[:message],
+  # Post /createMessage
+  def createMessage
+    @message_params = {
+        "user_id" => params[:helperId],
+        "content" => params[:content],
     }
-    @conversation =  Conversation.new(@conversation_params)
-    if @conversation.save
-      @tempConversations =  Conversation.where(request_id: params[:requestId]).all
-      @conversations = []
-      @tempConversations.each do |conversation|
-        @temp = {
-            "id" => conversation.id,
-            "requestId" => conversation.request_id,
-            "userId" => conversation.user_id,
-            "userName" => conversation.user.firstName + ' ' + conversation.user.lastName,
-            "message" => conversation.message,
-        }
-        @conversations.push(@temp)
-      end
-      @userCount = Conversation.where(request_id: params[:requestId]).distinct.count(:user_id)
-      if @userCount > 4
-        Request.where(id: params[:requestId]).update(:status => false)
+    @message = Message.new(@message_params)
+    if @message.save
+      @conversation_params = {
+          "request_id" => params[:requestId],
+          "user_id" => params[:conversationUserId],
+          'message_id' => @message.id
+      }
+      @conversation = Conversation.new(@conversation_params);
+      if @conversation.save
+        @conversations = Conversation.where(request_id: params[:requestId]).where(user_id: params[:conversationUserId]).all
+        @messages = []
+        @conversations.each do |conversation|
+          @temp = {
+              "userName" => conversation.message.user.firstName + ' ' + conversation.message.user.lastName,
+              "content" => conversation.message.content,
+          }
+          @messages.push(@temp)
+        end
+        @request = Request.find_by_id(params[:requestId])
+        @conversations = Conversation.where(request_id: params[:requestId]).where.not(user_id: @request.user_id).select('distinct(user_id)')
+        if @conversations.length() > 4
+          Request.where(id: params[:requestId]).update(:status => false)
+        end
+        render json: @messages, status: :created
       else
-        logger::info @userCount
+        render json: { errors: @conversation.errors.full_messages },
+               status: :unprocessable_entity
       end
-      render json: @conversations, status: :created
     else
-      render json: { errors: @conversation.errors.full_messages },
+      render json: { errors: @message.errors.full_messages },
              status: :unprocessable_entity
     end
   end
 
-  # Post /getConversation
-  def getConversation
-    @tempConversations =  Conversation.where(request_id: params[:requestId]).all
-    @conversations = []
-    @tempConversations.each do |conversation|
+  # Post /getMessage
+  def getMessage
+    @conversations = Conversation.where(request_id: params[:requestId]).where(user_id: params[:conversationUserId]).all
+    @messages = []
+    @conversations.each do |conversation|
       @temp = {
-          "id" => conversation.id,
-          "requestId" => conversation.request_id,
-          "userId" => conversation.user_id,
-          "userName" => conversation.user.firstName + ' ' + conversation.user.lastName,
-          "message" => conversation.message,
+          "userName" => conversation.message.user.firstName + ' ' + conversation.message.user.lastName,
+          "content" => conversation.message.content,
       }
-      @conversations.push(@temp)
+      @messages.push(@temp)
     end
-    render json: @conversations, status: :created
+    render json: @messages, status: :created
+  end
+
+  # Post /getHelper
+  def getHelper
+    @conversations = Conversation.where(request_id: params[:requestId]).where.not(user_id: params[:userId]).select('distinct(user_id)')
+    @helpers = []
+    @conversations.each do |conversation|
+      @temp = {
+          "userName" => conversation.user.firstName + ' ' + conversation.user.lastName,
+          "userId" => conversation.user_id,
+      }
+      @helpers.push(@temp)
+    end
+    render json: @helpers, status: :created
   end
 
   private
@@ -83,7 +115,4 @@ class MainController < ApplicationController
     params.require(:request).permit(:description, :requestType, :latitude, :longitude, :address, :user_id, :status )
   end
 
-  def conversation_params
-    params.require(:conversation).permit(:request_id, :user_id, :message )
-  end
 end

@@ -5,8 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/main_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/main_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/development.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/development.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/pids/server.pid" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/pids/server.pid" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +155,9 @@
       <workItem from="1593810967875" duration="233000" />
       <workItem from="1593811247106" duration="24823000" />
       <workItem from="1594128872262" duration="3401000" />
+      <workItem from="1594157628355" duration="3161000" />
+      <workItem from="1594197382506" duration="4396000" />
+      <workItem from="1594219232686" duration="1613000" />
     </task>
     <task id="LOCAL-00001" summary="feat: create main controller&#10;fix: move getRequest and createRequest functions to main">
       <created>1594134943023</created>
@@ -163,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594134943023</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: create new conversation">
+      <created>1594136667423</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1594136667423</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,7 +184,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -182,25 +194,26 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: create main controller&#10;fix: move getRequest and createRequest functions to main" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: create main controller&#10;fix: move getRequest and createRequest functions to main" />
+    <MESSAGE value="feat: create new conversation" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: create new conversation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593811298784">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593811298784" />
-    <state x="585" y="115" key="CommitChangelistDialog2" timestamp="1594134941942">
+    <state x="585" y="115" key="CommitChangelistDialog2" timestamp="1594136666253">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1594134941942" />
+    <state x="585" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1594136666253" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1594134437939">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594134437939" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1594134944576">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1594136668944">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1594134944576" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1594136668944" />
     <state x="656" y="118" width="1084" height="804" key="find.popup" timestamp="1593865580835">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -22,7 +22,7 @@ class MainController < ApplicationController
 
   # Get /getRequests
   def getRequests
-    @requests =  Request.all
+    @requests =  Request.where(status: true).all
     render json: @requests, status: :ok
   end
 
@@ -35,12 +35,46 @@ class MainController < ApplicationController
     }
     @conversation =  Conversation.new(@conversation_params)
     if @conversation.save
-      @conversations =  Conversation.where(request_id: params[:requestId]).all
+      @tempConversations =  Conversation.where(request_id: params[:requestId]).all
+      @conversations = []
+      @tempConversations.each do |conversation|
+        @temp = {
+            "id" => conversation.id,
+            "requestId" => conversation.request_id,
+            "userId" => conversation.user_id,
+            "userName" => conversation.user.firstName + ' ' + conversation.user.lastName,
+            "message" => conversation.message,
+        }
+        @conversations.push(@temp)
+      end
+      @userCount = Conversation.where(request_id: params[:requestId]).distinct.count(:user_id)
+      if @userCount > 4
+        Request.where(id: params[:requestId]).update(:status => false)
+      else
+        logger::info @userCount
+      end
       render json: @conversations, status: :created
     else
       render json: { errors: @conversation.errors.full_messages },
              status: :unprocessable_entity
     end
+  end
+
+  # Post /getConversation
+  def getConversation
+    @tempConversations =  Conversation.where(request_id: params[:requestId]).all
+    @conversations = []
+    @tempConversations.each do |conversation|
+      @temp = {
+          "id" => conversation.id,
+          "requestId" => conversation.request_id,
+          "userId" => conversation.user_id,
+          "userName" => conversation.user.firstName + ' ' + conversation.user.lastName,
+          "message" => conversation.message,
+      }
+      @conversations.push(@temp)
+    end
+    render json: @conversations, status: :created
   end
 
   private

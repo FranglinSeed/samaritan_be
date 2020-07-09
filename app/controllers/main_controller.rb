@@ -109,6 +109,27 @@ class MainController < ApplicationController
     render json: @helpers, status: :created
   end
 
+  # Post /getRequestUser
+  def getRequestUser
+    @requests = Conversation.select('distinct on (request_id) *')
+    @users = []
+    @requests.each do |request|
+      @conversations = Conversation.where(request_id: request.request_id).where(user_id: params[:userId])
+      @conversations.each do |conversation|
+        if conversation.message.user.id.to_s != params[:userId]
+          @temp = {
+              "userName" => conversation.request.user.firstName + ' ' + conversation.request.user.lastName,
+              "userId" => conversation.request.user_id,
+              "requestId" => conversation.request.id
+          }
+          @users.push(@temp)
+          break
+        end
+      end
+    end
+    render json: @users, status: :created
+  end
+
   private
 
   def request_params

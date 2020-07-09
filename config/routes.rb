@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   post '/createMessage', to: 'main#createMessage'
   post '/getMessage', to: 'main#getMessage'
   post '/getHelper', to: 'main#getHelper'
+  post '/getRequestUser', to: 'main#getRequestUser'
   get '/*a', to: 'application#not_found'
 end

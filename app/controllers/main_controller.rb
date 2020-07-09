@@ -133,9 +133,23 @@ class MainController < ApplicationController
       @temp = {
           "userName" => conversation.request.user.firstName + ' ' + conversation.request.user.lastName,
           "userId" => conversation.request.user.id,
-          "requestId" => conversation.request.id
+          "requestId" => conversation.request.id,
+          "myRequest" => false
       }
       @helpers.push(@temp)
+    end
+    @request = Request.find_by_user_id(params[:userId])
+    if @request
+      @conversations = Conversation.where(request_id: @request.id).select('distinct on (user_id) *')
+      @conversations.each do |conversation|
+        @temp = {
+            "userName" => conversation.user.firstName + ' ' + conversation.user.lastName,
+            "userId" => conversation.user.id,
+            "requestId" => conversation.request.id,
+            "myRequest" => true
+        }
+        @helpers.push(@temp)
+      end
     end
     render json: @helpers, status: :created
   end

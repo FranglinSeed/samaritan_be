@@ -4,8 +4,6 @@
     <list default="true" id="f0d7ec80-8973-4c7e-83eb-b48bf6f93256" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/main_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/main_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/development.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/development.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/pids/server.pid" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/pids/server.pid" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +157,7 @@
       <workItem from="1594197382506" duration="4396000" />
       <workItem from="1594219232686" duration="14933000" />
       <workItem from="1594301171263" duration="7652000" />
-      <workItem from="1594322999813" duration="2818000" />
+      <workItem from="1594322999813" duration="5568000" />
     </task>
     <task id="LOCAL-00001" summary="feat: create main controller&#10;fix: move getRequest and createRequest functions to main">
       <created>1594134943023</created>
@@ -196,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594311092718</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix: conversation function">
+      <created>1594330231519</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1594330231520</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,17 +226,18 @@
     <MESSAGE value="feat: old conversation login implemented" />
     <MESSAGE value="fix: complete message function" />
     <MESSAGE value="fix: all functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: all functions" />
+    <MESSAGE value="fix: conversation function" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: conversation function" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593811298784">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593811298784" />
-    <state x="585" y="115" key="CommitChangelistDialog2" timestamp="1594311091528">
+    <state x="585" y="115" key="CommitChangelistDialog2" timestamp="1594330230159">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1594311091528" />
+    <state x="585" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1594330230159" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1594239251751">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -240,10 +246,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1594301205807" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1594311097147">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1594330233377">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1594311097147" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1594330233377" />
     <state x="656" y="118" width="1084" height="804" key="find.popup" timestamp="1593865580835">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -252,9 +258,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="774" y="415" key="git4idea.ui.GitResetDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593875442504" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1593846449565">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1594331684464">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1593846449565" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1594331684464" />
   </component>
 </project>

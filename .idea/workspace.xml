@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0d7ec80-8973-4c7e-83eb-b48bf6f93256" name="Default Changelist" comment="">
+    <list default="true" id="f0d7ec80-8973-4c7e-83eb-b48bf6f93256" name="Default Changelist" comment="fix: conversation button function">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/main_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/main_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/conversation.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/conversation.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/message.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/message.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/request.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/request.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/development.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/development.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/pids/server.pid" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/pids/server.pid" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +161,10 @@
       <workItem from="1594197382506" duration="4396000" />
       <workItem from="1594219232686" duration="14933000" />
       <workItem from="1594301171263" duration="7652000" />
-      <workItem from="1594322999813" duration="5568000" />
+      <workItem from="1594322999813" duration="6227000" />
+      <workItem from="1594340723052" duration="39000" />
+      <workItem from="1594392250797" duration="633000" />
+      <workItem from="1594576972729" duration="1821000" />
     </task>
     <task id="LOCAL-00001" summary="feat: create main controller&#10;fix: move getRequest and createRequest functions to main">
       <created>1594134943023</created>
@@ -201,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594330231520</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix: conversation button function">
+      <created>1594333338614</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1594333338614</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,17 +241,18 @@
     <MESSAGE value="fix: complete message function" />
     <MESSAGE value="fix: all functions" />
     <MESSAGE value="fix: conversation function" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: conversation function" />
+    <MESSAGE value="fix: conversation button function" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: conversation button function" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593811298784">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593811298784" />
-    <state x="585" y="115" key="CommitChangelistDialog2" timestamp="1594330230159">
+    <state x="585" y="115" key="CommitChangelistDialog2" timestamp="1594340761802">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1594330230159" />
+    <state x="585" y="115" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1594340761802" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1594239251751">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -246,10 +261,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1594301205807" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1594330233377">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1594333340224">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1594330233377" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1594333340224" />
     <state x="656" y="118" width="1084" height="804" key="find.popup" timestamp="1593865580835">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

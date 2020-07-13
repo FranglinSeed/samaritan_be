@@ -31293,3 +31293,544 @@ Processing by MainController#createMessage as */*
 Completed 422 Unprocessable Entity in 33ms (Views: 0.1ms | ActiveRecord: 25.0ms | Allocations: 5898)
 
 
+Started GET "//getRequests" for ::1 at 2020-07-13 11:20:24 +0900
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MainController#getRequests as HTML
+  [1m[36mRequest Load (1.4ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."status" = $1[0m  [["status", true]]
+  ↳ app/controllers/main_controller.rb:27:in `getRequests'
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:36:in `block in getRequests'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:36:in `block in getRequests'
+Completed 200 OK in 61ms (Views: 0.2ms | ActiveRecord: 10.4ms | Allocations: 20389)
+
+
+Started GET "/api/stats" for ::1 at 2020-07-13 11:22:36 +0900
+Processing by ApplicationController#not_found as HTML
+  Parameters: {"a"=>"api/stats"}
+Completed 200 OK in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 102)
+
+
+Started GET "//getRequests" for ::1 at 2020-07-13 11:23:00 +0900
+Processing by MainController#getRequests as HTML
+  [1m[36mRequest Load (0.4ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."status" = $1[0m  [["status", true]]
+  ↳ app/controllers/main_controller.rb:27:in `getRequests'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:36:in `block in getRequests'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:36:in `block in getRequests'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 2496)
+
+
+Started POST "//users" for ::1 at 2020-07-13 11:23:16 +0900
+Processing by UsersController#create as HTML
+  Parameters: {"firstName"=>"haha", "lastName"=>"haha", "email"=>"haha@gmail.com", "password"=>"[FILTERED]", "attachment"=>"", "user"=>{"firstName"=>"haha", "lastName"=>"haha", "email"=>"haha@gmail.com", "attachment"=>""}}
+[31mUnpermitted parameter: :user[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "haha@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("firstName", "lastName", "email", "password_digest", "attachment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["firstName", "haha"], ["lastName", "haha"], ["email", "haha@gmail.com"], ["password_digest", "$2a$12$27nAr8wT3g77nrC5eYe47OjLJHaN3rsJ9xIao2kcAflNpJd/NmrPa"], ["attachment", ""], ["created_at", "2020-07-13 02:23:17.100517"], ["updated_at", "2020-07-13 02:23:17.100517"]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 201 Created in 225ms (Views: 0.1ms | ActiveRecord: 1.9ms | Allocations: 4256)
+
+
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at C:/Ruby26-x64/bin/rake:23)
+Started POST "/createRequest" for ::1 at 2020-07-14 01:43:06 +0300
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212"}}
+Completed 400 Bad Request in 95ms (Views: 0.2ms | ActiveRecord: 7.2ms | Allocations: 15092)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:44:13 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"adsfasdfsadfsadf", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "main"=>{"description"=>"adsfasdfsadfsadf", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212"}}
+Completed 400 Bad Request in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 1213)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:44:45 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>1, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>1, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+Completed 400 Bad Request in 74ms (Views: 0.1ms | ActiveRecord: 4.7ms | Allocations: 10222)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:45:01 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>1, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>1, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+Completed 400 Bad Request in 16ms (Views: 0.1ms | ActiveRecord: 0.8ms | Allocations: 3237)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:46:28 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>1, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>1, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+Completed 400 Bad Request in 8ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 3242)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:46:54 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>1, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>1, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+Completed 400 Bad Request in 7ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 3232)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:47:05 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>1, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>1, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+Completed 400 Bad Request in 9ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 3232)
+
+
+Started POST "/createMessage" for ::1 at 2020-07-14 01:47:24 +0300
+Processing by MainController#createMessage as */*
+  Parameters: {"requestId"=>"17", "helperId"=>"2", "conversationUserId"=>"3", "content"=>"I love you", "main"=>{"requestId"=>"17", "helperId"=>"2", "conversationUserId"=>"3", "content"=>"I love you"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:51:in `createMessage'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:51:in `createMessage'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:51:in `createMessage'
+Completed 422 Unprocessable Entity in 16ms (Views: 0.2ms | ActiveRecord: 3.2ms | Allocations: 7523)
+
+
+Started POST "/createMessage" for ::1 at 2020-07-14 01:47:42 +0300
+Processing by MainController#createMessage as */*
+  Parameters: {"requestId"=>"17", "helperId"=>"1", "conversationUserId"=>"1", "content"=>"I love you", "main"=>{"requestId"=>"17", "helperId"=>"1", "conversationUserId"=>"1", "content"=>"I love you"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:51:in `createMessage'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:51:in `createMessage'
+  [1m[36mMessage Create (11.3ms)[0m  [1m[32mINSERT INTO "messages" ("user_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["content", "I love you"], ["created_at", "2020-07-13 22:47:42.358020"], ["updated_at", "2020-07-13 22:47:42.358020"]]
+  ↳ app/controllers/main_controller.rb:51:in `createMessage'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:51:in `createMessage'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:58:in `createMessage'
+  [1m[36mRequest Load (1.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:58:in `createMessage'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:58:in `createMessage'
+  [1m[36mMessage Load (1.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:58:in `createMessage'
+  [1m[36mConversation Exists? (3.2ms)[0m  [1m[34mSELECT 1 AS one FROM "conversations" WHERE "conversations"."message_id" = $1 LIMIT $2[0m  [["message_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:58:in `createMessage'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:58:in `createMessage'
+Completed 422 Unprocessable Entity in 49ms (Views: 0.2ms | ActiveRecord: 21.2ms | Allocations: 16327)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:47:52 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>1, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>1, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+Completed 400 Bad Request in 7ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 3253)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:48:45 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>3, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>3, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+Completed 400 Bad Request in 7ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 3232)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:48:47 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>3, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>3, "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+Completed 400 Bad Request in 8ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 3234)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:48:52 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"12", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"12", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+Completed 400 Bad Request in 8ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 3504)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:48:56 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+Completed 400 Bad Request in 9ms (Views: 0.1ms | ActiveRecord: 0.8ms | Allocations: 3232)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:48:57 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:16:in `createRequest'
+Completed 400 Bad Request in 5ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 3232)
+
+
+Started GET "/getRequests" for ::1 at 2020-07-14 01:49:17 +0300
+Processing by MainController#getRequests as */*
+  Parameters: {"main"=>{}}
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."status" = $1[0m  [["status", true]]
+  ↳ app/controllers/main_controller.rb:27:in `getRequests'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:36:in `block in getRequests'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:36:in `block in getRequests'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 2518)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:49:41 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "user_id"=>"1", "status"=>false}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+Completed 400 Bad Request in 30ms (Views: 0.1ms | ActiveRecord: 7.2ms | Allocations: 17190)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:50:36 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "user_id"=>"1", "status"=>false}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+uuuuuu
+Completed 400 Bad Request in 32ms (Views: 0.1ms | ActiveRecord: 5.8ms | Allocations: 17162)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:51:41 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "user_id"=>"1", "status"=>false}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mRequest Create (1.0ms)[0m  [1m[32mINSERT INTO "requests" ("user_id", "description", "requestType", "latitude", "longitude", "address", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["user_id", 1], ["description", "asdfa"], ["requestType", "One Time"], ["latitude", 20.0], ["longitude", 20.0], ["address", "121212"], ["status", false], ["created_at", "2020-07-13 22:51:41.557130"], ["updated_at", "2020-07-13 22:51:41.557130"]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+hahaha
+Completed 201 Created in 34ms (Views: 0.2ms | ActiveRecord: 7.1ms | Allocations: 17286)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:51:52 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "user_id"=>"1", "status"=>false}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+uuuuuu
+Completed 400 Bad Request in 26ms (Views: 0.1ms | ActiveRecord: 5.8ms | Allocations: 17088)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:51:54 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "user_id"=>"1", "status"=>false}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+uuuuuu
+Completed 400 Bad Request in 7ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 3284)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:52:01 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "user_id"=>"1", "status"=>false}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+uuuuuu
+Completed 400 Bad Request in 29ms (Views: 0.1ms | ActiveRecord: 6.0ms | Allocations: 16901)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:52:11 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "user_id"=>"1", "status"=>false}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mRequest Create (0.5ms)[0m  [1m[32mINSERT INTO "requests" ("user_id", "description", "requestType", "latitude", "longitude", "address", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["user_id", 1], ["description", "asdfa"], ["requestType", "One Time"], ["latitude", 20.0], ["longitude", 20.0], ["address", "121212"], ["status", false], ["created_at", "2020-07-13 22:52:11.834137"], ["updated_at", "2020-07-13 22:52:11.834137"]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+hahaha
+Completed 201 Created in 36ms (Views: 0.1ms | ActiveRecord: 7.9ms | Allocations: 17273)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:53:07 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "user_id"=>"1", "status"=>false}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mRequest Create (0.6ms)[0m  [1m[32mINSERT INTO "requests" ("user_id", "description", "requestType", "latitude", "longitude", "address", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["user_id", 1], ["description", "asdfa"], ["requestType", "One Time"], ["latitude", 20.0], ["longitude", 20.0], ["address", "121212"], ["status", false], ["created_at", "2020-07-13 22:53:07.126821"], ["updated_at", "2020-07-13 22:53:07.126821"]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+hahaha
+Completed 201 Created in 33ms (Views: 0.1ms | ActiveRecord: 7.5ms | Allocations: 17316)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:53:16 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "user_id"=>"1", "status"=>false}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mRequest Create (0.5ms)[0m  [1m[32mINSERT INTO "requests" ("user_id", "description", "requestType", "latitude", "longitude", "address", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["user_id", 1], ["description", "asdfa"], ["requestType", "One Time"], ["latitude", 20.0], ["longitude", 20.0], ["address", "121212"], ["status", false], ["created_at", "2020-07-13 22:53:16.304106"], ["updated_at", "2020-07-13 22:53:16.304106"]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+hahaha
+Completed 201 Created in 39ms (Views: 0.1ms | ActiveRecord: 7.1ms | Allocations: 17425)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:53:21 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "user_id"=>"1", "status"=>false}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "requests" ("user_id", "description", "requestType", "latitude", "longitude", "address", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["user_id", 1], ["description", "asdfa"], ["requestType", "One Time"], ["latitude", 20.0], ["longitude", 20.0], ["address", "121212"], ["status", false], ["created_at", "2020-07-13 22:53:21.179342"], ["updated_at", "2020-07-13 22:53:21.179342"]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+hahaha
+Completed 201 Created in 28ms (Views: 0.1ms | ActiveRecord: 6.8ms | Allocations: 17461)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:53:24 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "user_id"=>"1", "status"=>false}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mRequest Create (0.5ms)[0m  [1m[32mINSERT INTO "requests" ("user_id", "description", "requestType", "latitude", "longitude", "address", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["user_id", 1], ["description", "asdfa"], ["requestType", "One Time"], ["latitude", 20.0], ["longitude", 20.0], ["address", "121212"], ["status", false], ["created_at", "2020-07-13 22:53:24.919710"], ["updated_at", "2020-07-13 22:53:24.919710"]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+hahaha
+Completed 201 Created in 30ms (Views: 0.1ms | ActiveRecord: 6.4ms | Allocations: 17571)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:53:28 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "user_id"=>"1", "status"=>false}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "requests" ("user_id", "description", "requestType", "latitude", "longitude", "address", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["user_id", 1], ["description", "asdfa"], ["requestType", "One Time"], ["latitude", 20.0], ["longitude", 20.0], ["address", "121212"], ["status", false], ["created_at", "2020-07-13 22:53:28.643849"], ["updated_at", "2020-07-13 22:53:28.643849"]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+hahaha
+Completed 201 Created in 39ms (Views: 0.1ms | ActiveRecord: 7.9ms | Allocations: 17642)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:53:32 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "user_id"=>"1", "status"=>false}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "requests" ("user_id", "description", "requestType", "latitude", "longitude", "address", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["user_id", 1], ["description", "asdfa"], ["requestType", "One Time"], ["latitude", 20.0], ["longitude", 20.0], ["address", "121212"], ["status", false], ["created_at", "2020-07-13 22:53:32.401759"], ["updated_at", "2020-07-13 22:53:32.401759"]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+hahaha
+Completed 201 Created in 35ms (Views: 0.1ms | ActiveRecord: 6.4ms | Allocations: 17720)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:53:39 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "user_id"=>"1", "status"=>false}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+uuuuuu
+Completed 400 Bad Request in 53ms (Views: 0.1ms | ActiveRecord: 8.1ms | Allocations: 17167)
+
+
+Started POST "/createRequest" for ::1 at 2020-07-14 01:53:46 +0300
+Processing by MainController#createRequest as */*
+  Parameters: {"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false, "main"=>{"description"=>"asdfa", "requestType"=>"One Time", "userId"=>"1", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "status"=>false}}
+{"description"=>"asdfa", "requestType"=>"One Time", "latitude"=>"20.00", "longitude"=>"20.00", "address"=>"121212", "user_id"=>"1", "status"=>false}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[36mRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "requests" ("user_id", "description", "requestType", "latitude", "longitude", "address", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["user_id", 1], ["description", "asdfa"], ["requestType", "One Time"], ["latitude", 20.0], ["longitude", 20.0], ["address", "121212"], ["status", false], ["created_at", "2020-07-13 22:53:46.581362"], ["updated_at", "2020-07-13 22:53:46.581362"]]
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:17:in `createRequest'
+hahaha
+Completed 201 Created in 33ms (Views: 0.3ms | ActiveRecord: 9.1ms | Allocations: 17729)
+
+
+Started POST "/getHelper" for ::1 at 2020-07-14 02:19:06 +0300
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MainController#getHelper as */*
+  Parameters: {"userId"=>"2", "main"=>{"userId"=>"2"}}
+  [1m[36mConversation Load (2.3ms)[0m  [1m[34mSELECT distinct(user_id) FROM "conversations" WHERE "conversations"."request_id" IS NULL AND "conversations"."user_id" != $1[0m  [["user_id", 2]]
+  ↳ app/controllers/main_controller.rb:103:in `getHelper'
+Completed 201 Created in 19ms (Views: 0.2ms | ActiveRecord: 3.7ms | Allocations: 3714)
+
+
+Started GET "/getRequests" for ::1 at 2020-07-14 02:19:09 +0300
+Processing by MainController#getRequests as */*
+  Parameters: {"main"=>{}}
+  [1m[36mRequest Load (1.7ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."status" = $1[0m  [["status", true]]
+  ↳ app/controllers/main_controller.rb:28:in `getRequests'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:37:in `block in getRequests'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:37:in `block in getRequests'
+Completed 200 OK in 58ms (Views: 0.2ms | ActiveRecord: 11.7ms | Allocations: 18941)
+
+
+Started POST "/getHelper" for ::1 at 2020-07-14 02:19:11 +0300
+Processing by MainController#getHelper as */*
+  Parameters: {"requestId"=>"1", "userId"=>"2", "main"=>{"requestId"=>"1", "userId"=>"2"}}
+  [1m[36mConversation Load (0.4ms)[0m  [1m[34mSELECT distinct(user_id) FROM "conversations" WHERE "conversations"."request_id" = $1 AND "conversations"."user_id" != $2[0m  [["request_id", 1], ["user_id", 2]]
+  ↳ app/controllers/main_controller.rb:103:in `getHelper'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:105:in `block in getHelper'
+Completed 201 Created in 11ms (Views: 0.1ms | ActiveRecord: 2.1ms | Allocations: 5444)
+
+
+Started POST "/getMessage" for ::1 at 2020-07-14 02:19:14 +0300
+Processing by MainController#getMessage as */*
+  Parameters: {"requestId"=>"1", "main"=>{"requestId"=>"1"}}
+  [1m[36mConversation Load (0.4ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."request_id" = $1 AND "conversations"."user_id" IS NULL[0m  [["request_id", 1]]
+  ↳ app/controllers/main_controller.rb:89:in `getMessage'
+Completed 201 Created in 4ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 859)
+
+
+Started POST "/getMessage" for ::1 at 2020-07-14 02:19:17 +0300
+Processing by MainController#getMessage as */*
+  Parameters: {"requestId"=>"1", "main"=>{"requestId"=>"1"}}
+  [1m[36mConversation Load (0.3ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE "conversations"."request_id" = $1 AND "conversations"."user_id" IS NULL[0m  [["request_id", 1]]
+  ↳ app/controllers/main_controller.rb:89:in `getMessage'
+Completed 201 Created in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 827)
+
+
+Started POST "/createMessage" for ::1 at 2020-07-14 02:19:19 +0300
+Processing by MainController#createMessage as */*
+  Parameters: {"requestId"=>"17", "helperId"=>"1", "conversationUserId"=>"1", "content"=>"I love you", "main"=>{"requestId"=>"17", "helperId"=>"1", "conversationUserId"=>"1", "content"=>"I love you"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:52:in `createMessage'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:52:in `createMessage'
+  [1m[36mMessage Create (1.0ms)[0m  [1m[32mINSERT INTO "messages" ("user_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["content", "I love you"], ["created_at", "2020-07-13 23:19:19.855025"], ["updated_at", "2020-07-13 23:19:19.855025"]]
+  ↳ app/controllers/main_controller.rb:52:in `createMessage'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/main_controller.rb:52:in `createMessage'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/main_controller.rb:59:in `createMessage'
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:59:in `createMessage'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:59:in `createMessage'
+  [1m[36mMessage Load (0.9ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:59:in `createMessage'
+  [1m[36mConversation Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "conversations" WHERE "conversations"."message_id" = $1 LIMIT $2[0m  [["message_id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/main_controller.rb:59:in `createMessage'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/main_controller.rb:59:in `createMessage'
+Completed 422 Unprocessable Entity in 59ms (Views: 0.1ms | ActiveRecord: 7.1ms | Allocations: 17720)
+
+

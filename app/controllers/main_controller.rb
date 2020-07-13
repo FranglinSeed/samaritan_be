@@ -1,5 +1,5 @@
 class MainController < ApplicationController
-  before_action :authorize_request, except: %i[getRequests]
+  #before_action :authorize_request, except: %i[getRequests]
 
   # POST /createRequest
   def createRequest
@@ -9,14 +9,15 @@ class MainController < ApplicationController
         "latitude" => params[:latitude],
         "longitude" => params[:longitude],
         "address" => params[:address],
-        "user_id" => @current_user.id,
+        "user_id" => params[:userId],
         "status" => params[:status],
     }
     @request =  Request.new(@request_params)
     if @request.save
       render json: {result: true}, status: :created
     else
-      render error: { error: 'Unable to create request.' }, status: 400
+      render json: { errors: @request.errors.full_messages },
+             status: :unprocessable_entity
     end
   end
 
@@ -111,22 +112,6 @@ class MainController < ApplicationController
 
   # Post /getRequestUser
   def getRequestUser
-    #@requests = Conversation.select('distinct on (request_id) *')
-    #@users = []
-    #@requests.each do |request|
-    #  @conversations = Conversation.where(request_id: request.request_id).where(user_id: params[:userId])
-    #  @conversations.each do |conversation|
-    #    if conversation.message.user.id.to_s != params[:userId]
-    #      @temp = {
-    #          "userName" => conversation.request.user.firstName + ' ' + conversation.request.user.lastName,
-    #          "userId" => conversation.request.user_id,
-    #          "requestId" => conversation.request.id
-    #      }
-    #      @users.push(@temp)
-    #      break
-    #    end
-    #  end
-    #end
     @conversations = Conversation.where(user_id: params[:userId]).select('distinct on (request_id) *')
     @helpers = []
     @conversations.each do |conversation|

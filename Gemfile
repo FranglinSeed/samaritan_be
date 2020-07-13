@@ -43,3 +43,15 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Rack CORS for handling Cross-Origin Resources Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem "factory_bot"
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+end

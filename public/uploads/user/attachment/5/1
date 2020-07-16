@@ -1,0 +1,11 @@
+I need a plugin "RESTRICT ON GENERIC CONDITION" that can be used any place where the user access to an activity or resource can be restricted. The plugin should be able to run a select statement that will return a true/false value (1/0) against an external database, and give access to the activity/resource is the value is true. If the value is false (or there is some error with the execution of the call), the activity/resource should not be visible. It must be possible to use the current userid and at least the course id as parameters in the call. E.g. "SELECT (username = "admin") FROM mdl_user WHERE id = &current_user_id" (or whatever the parameter for the currently logged in user is..)
+
+I need to be able to reuse variables from Moodle context in the call, see https://docs.moodle.org/dev/Access_API
+
+E.g. "SELECT (x=1) FROM ... WHERE userid = $user_id and courseif = "@courseid"
+
+
+Well, I want to make restriction plugin.
+and then we can input sql query on text input field when we add the restriction of any activity or resources.
+So we have to execute sql query from the external database
+and then we can input external db connection infos on settings of plugin modal

@@ -21,6 +21,16 @@ class MainController < ApplicationController
     end
   end
 
+  # POST /activeRequest
+  def activeRequest
+    Request.where(id: params[:requestId]).update(:status => true)
+    @request = Request.find_by_id(params[:requestId])
+    @conversations = Conversation.where(request_id: params[:requestId]).where.not(user_id: @request.user_id).select('distinct(user_id)')
+    @lastUserId = @conversations[@conversations.length() - 1].user_id
+    Conversation.where(request_id: params[:requestId]).where(user_id: @lastUserId).destroy_all
+    render json: {result: true}, status: :created
+  end
+
   # Get /getRequests
   def getRequests
     @tempRequests =  Request.where(status: true).all
@@ -137,6 +147,27 @@ class MainController < ApplicationController
       end
     end
     render json: @helpers, status: :created
+  end
+
+  # Get /getDeactivatedRequests
+  def getDeactivatedRequests
+    @tempRequests =  Request.where(status: false).all
+    @requests = []
+    @tempRequests.each do |request|
+      @temp = {
+          "id" => request.id,
+          "userId" => request.user_id.to_s,
+          "description" => request.description,
+          "requestType" => request.requestType,
+          "latitude" => request.latitude,
+          "longitude" => request.longitude,
+          "address" => request.address,
+          "userName" => request.user.firstName + ' ' + request.user.lastName,
+          "status" => request.status,
+      }
+      @requests.push(@temp)
+    end
+    render json: @requests, status: :ok
   end
 
   private

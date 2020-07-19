@@ -149,9 +149,9 @@ class MainController < ApplicationController
     render json: @helpers, status: :created
   end
 
-  # Get /getDeactivatedRequests
+  # Post /getDeactivatedRequests
   def getDeactivatedRequests
-    @tempRequests =  Request.where(status: false).all
+    @tempRequests =  Request.where(user_id: params[:userId]).where(status: false).where(updated_at: (Time.now - 24.hours)..Time.now).all
     @requests = []
     @tempRequests.each do |request|
       @temp = {

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/createRequest', to: 'main#createRequest'
   post '/activeRequest', to: 'main#activeRequest'
   get '/getRequests', to: 'main#getRequests'
-  get '/getDeactivatedRequests', to: 'main#getDeactivatedRequests'
+  post '/getDeactivatedRequests', to: 'main#getDeactivatedRequests'
   post '/createMessage', to: 'main#createMessage'
   post '/getMessage', to: 'main#getMessage'
   post '/getHelper', to: 'main#getHelper'
